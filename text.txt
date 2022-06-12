@@ -1,0 +1,1 @@
+"main_frame" or "sub_frame" or "stylesheet" or "script" or "image" or "font" or "object" or "xmlhttprequest" or "ping" or "csp_report" or "media" or "websocket" or "webtransport" or "webbundle" or "other",

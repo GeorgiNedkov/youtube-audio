@@ -1,0 +1,25 @@
+@import "switch.css";
+@import "preloaded.css";
+
+:root {
+    --black: rgb(43, 43, 43);
+}
+
+body {
+  width: 400px;
+  height: 300px;
+  background-color: var(--black);
+  border-radius: 50%;
+}
+
+.icon{
+    align-self:center;
+    margin-right: 10px;
+}
+
+header{
+    display: flex;
+}
+header h1{
+    color: white;
+}

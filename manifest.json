@@ -1,47 +1,39 @@
 {
   "name": "Youtube Audio",
-  "version": "0.0.2.5",
-  "manifest_version": 2,
+  "version": "0.0.1",
+  "manifest_version": 3,
   "description": "Stream only Audio on Youtube",
   "homepage_url": "https://github.com/animeshkundu/youtube-audio",
-  "icons": {
-    "38": "img/icon38.png",
-    "128": "img/icon128.png"
-  },
-  "background": {
-    "scripts": [
-      "js/global.js"
-    ]
-  },
-  "permissions": [
-    "tabs",
-    "webRequest",
-    "*://*/*",
-    "webRequestBlocking",
-    "storage"
-  ],
-  "browser_action": {
-    "default_title": "Youtube Audio"
-  },
+  "permissions": ["tabs", "storage", "webRequest", "webNavigation"],
+  "host_permissions": ["https://*.youtube.com/*","https://*.googlevideo.com/*" ],
+
   "content_scripts": [
     {
-      "all_frames": true,
-      "matches": [
-        "*://*.youtube.com/*",
-        "*://*.youtube-nocookie.com/*"
-      ],
+      "matches": ["https://*.youtube.com/*"],
       "js": [
-        "js/youtube_audio.js"
+        "dist/videoNarrower/videoController/VideoController.js",
+        "dist/videoNarrower/contentsScript.js"
       ],
-      "css": [
-        "css/youtube_audio.css"
-      ],
+      "css": ["src/videoNarrower/css/main.css"],
       "run_at": "document_start"
     }
   ],
-  "options_ui": {
-    "page": "html/options.html",
-    "browser_style": true,
-    "chrome_style": true
+
+  "background": {
+    "service_worker": "dist/background.js"
+  },
+
+  "externally_connectable": {
+    "matches": ["*://*.youtube.com/*"]
+  },
+
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Youtube Audio"
+  },
+
+  "icons": {
+    "38": "assets/images/icon38.png",
+    "128": "assets/images/icon128.png"
   }
 }
